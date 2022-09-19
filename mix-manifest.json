@@ -1,5 +1,4 @@
 {
-    "/resources/dist/js/quill.min.js": "/resources/dist/js/quill.min.js",
-    "/resources/dist/css/quill.core.css": "/resources/dist/css/quill.core.css",
-    "/resources/dist/css/quill.snow.css": "/resources/dist/css/quill.snow.css"
+    "/resources/dist/js/quill-editor.js": "/resources/dist/js/quill-editor.js",
+    "/resources/dist/css/editor.css": "/resources/dist/css/editor.css"
 }

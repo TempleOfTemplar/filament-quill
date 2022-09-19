@@ -32,7 +32,7 @@ Quill.register({
 Quill.register('modules/imageUploader', ImageUploader);
 
 
-export default (Alpine) => {
+document.addEventListener('alpine:init', () => {
     Alpine.data('quillEditorComponent', ({
                                              state,
                                          }) => {
@@ -95,4 +95,4 @@ export default (Alpine) => {
             },
         }
     });
-}
+});
