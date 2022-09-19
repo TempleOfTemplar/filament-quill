@@ -1,11 +1,12 @@
 import Quill from "quill/core/quill";
-import '../../dist/css/quill.core.css';
-import '../../dist/css/quill.snow.css';
+
 
 export default (Alpine) => {
     Alpine.data('quillEditorComponent', ({
                                              state,
                                          }) => {
+        import '../../dist/css/quill.core.css';
+        import '../../dist/css/quill.snow.css';
         return {
             state,
             init: function () {
@@ -17,7 +18,7 @@ export default (Alpine) => {
                     console.log("RENDER");
                     this.editor = null
                     this.editor = new Quill(this.$refs.quill, {
-                        theme: 'snow',
+                        theme: null,
                         modules: {
                             imageUploader: {
                                 upload: (file) => {
