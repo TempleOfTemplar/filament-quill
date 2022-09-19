@@ -1,6 +1,33 @@
 import Quill from "quill/core/quill";
-import '../../dist/css/quill.core.css';
-import '../../dist/css/quill.snow.css';
+import Snow from 'quill/themes/snow'
+import Toolbar from 'quill/modules/toolbar'
+import Bold from 'quill/formats/bold'
+import Italic from 'quill/formats/italic'
+import Header from 'quill/formats/header'
+import Underline from 'quill/formats/underline'
+import ListItem from 'quill/formats/list'
+import Strike from 'quill/formats/strike'
+import Blockquote from 'quill/formats/blockquote'
+import CodeBlock from 'quill/formats/code'
+import Script from 'quill/formats/script'
+import Image from 'quill/formats/image'
+import Link from 'quill/formats/link'
+
+Quill.register({
+    'modules/toolbar': Toolbar,
+    'themes/snow': Snow,
+    'formats/bold': Bold,
+    'formats/italic': Italic,
+    'formats/header': Header,
+    'formats/underline': Underline,
+    'formats/list': ListItem,
+    'formats/strike' : Strike,
+    'formats/blockquote' : Blockquote,
+    'formats/codeblock' : CodeBlock,
+    'formats/script' : Script,
+    'formats/image' : Image,
+    'formats/link' : Link,
+});
 
 Quill.register('modules/imageUploader', ImageUploader);
 
@@ -19,10 +46,10 @@ export default (Alpine) => {
                 window.addEventListener('DOMContentLoaded', () => initQuill())
                 $nextTick(() => initQuill())
                 const initQuill = () => {
-                    console.log("RENDER");
+                    console.log("RENDER", this.$refs, this.$el);
                     this.editor = null
 
-                    this.editor = new Quill(this.$refs.quill, {
+                    this.editor = new Quill(this.$el, {
                         theme: null,
                         modules: {
                             imageUploader: {
