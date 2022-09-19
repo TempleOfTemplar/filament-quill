@@ -75,15 +75,15 @@ document.addEventListener('alpine:init', () => {
                         },
                     });
                     // this.editor.setContents(this.state);
-                    this.editor.on('editor-change', function (eventName, ...args) {
-                        if (eventName === 'text-change') {
-                            // args[0] will be delta
-                            console.log('args', args);
-                            // this.state = args[0];
-                        } else if (eventName === 'selection-change') {
-                            // args[0] will be old range
-                        }
-                    });
+                    // this.editor.on('editor-change', function (eventName, ...args) {
+                    //     if (eventName === 'text-change') {
+                    //         // args[0] will be delta
+                    //         console.log('args', args);
+                    //         // this.state = args[0];
+                    //     } else if (eventName === 'selection-change') {
+                    //         // args[0] will be old range
+                    //     }
+                    // });
                 });
                 // $nextTick(() => initQuill())
                 // const initQuill = () => {
