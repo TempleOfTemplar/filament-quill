@@ -74,7 +74,7 @@ document.addEventListener('alpine:init', () => {
                             // },
                         },
                     });
-                    this.editor.setContents(this.state);
+                    // this.editor.setContents(this.state);
                     this.editor.on('editor-change', function (eventName, ...args) {
                         if (eventName === 'text-change') {
                             // args[0] will be delta
