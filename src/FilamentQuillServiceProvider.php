@@ -2,7 +2,10 @@
 
 namespace FilamentQuill;
 
-use Filament\PluginServiceProvider;
+use Filament\Facades\Filament;
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
+
 
 class FilamentQuillServiceProvider extends PackageServiceProvider
 {
@@ -19,10 +22,15 @@ class FilamentQuillServiceProvider extends PackageServiceProvider
     {
         if (class_exists(\Filament\FilamentServiceProvider::class)) {
             Filament::serving(function () {
-                Filament::registerScripts($this->getScripts(), true);
                 Filament::registerStyles($this->getStyles());
+                Filament::registerScripts($this->getScripts(), true);
             });
         }
+    }
+
+    protected function bootLoaders()
+    {
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'filament-quill');
     }
 
     public function getScripts(): array

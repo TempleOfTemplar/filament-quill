@@ -1,5 +1,10 @@
 import QuillEditorComponent from './components/quill-editor';
 
-document.addEventListener('alpine:init', () => {
+if(!window.Alpine) {
+    document.addEventListener('alpine:init', () => {
+        console.log("alpine:init");
+        window.Alpine.plugin(QuillEditorComponent);
+    })
+} else {
     window.Alpine.plugin(QuillEditorComponent);
-})
+}
