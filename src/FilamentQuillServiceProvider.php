@@ -9,11 +9,11 @@ class FilamentQuillServiceProvider extends PluginServiceProvider
     public static string $name = 'filament-quill';
 
     protected array $beforeCoreScripts = [
-        'filament-quill' => __DIR__ . '/../dist/filament-quill.js',
+        'filament-quill.js' => __DIR__ . '/../dist/filament-quill.js',
     ];
 
     protected array $styles = [
-        'filament-quill-styles-1' => __DIR__ . '/../resources/dist/css/quill.core.css',
-        'filament-quill-styles-2' => __DIR__ . '/../resources/dist/css/quill.snow.css',
+        'quill.core.css' => __DIR__ . '/../resources/dist/css/quill.core.css',
+        'quill.snow.css' => __DIR__ . '/../resources/dist/css/quill.snow.css',
     ];
 }
