@@ -1,0 +1,43 @@
+{
+    "name": "templeoftemplar/filament-quill",
+    "description": "Filament Form plugin for Date Range Input",
+    "version" : "0.1",
+    "keywords": [
+        "fillament-quill",
+        "filament",
+        "quill"
+    ],
+    "homepage": "https://github.com/templeoftemplar/filament-quill",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Templar",
+            "email": "imbalanced47@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "filament/forms": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "FilamentQuill\\": "src",
+            "FilamentQuill\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "FilamentQuill\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "FilamentQuillServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
