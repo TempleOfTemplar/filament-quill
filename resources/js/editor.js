@@ -11,51 +11,66 @@ document.addEventListener("alpine:init", () => {
             tools: tools,
             init() {
                 console.log("quill:init");
-                var quill = new Quill(this.$el, {
-                    theme: 'snow',
-                    modules: {
-                        imageUploader: {
-                            upload: (file) => {
-                                return new Promise((resolve) => {
-                                    this.$wire.upload(
-                                        `componentFileAttachments.${statePath}`,
-                                        file,
-                                        (uploadedFilename) => {
-                                            this.$wire
-                                                .getComponentFileAttachmentUrl(statePath)
-                                                .then((url) => {
-                                                    if (!url) {
-                                                        return resolve({
-                                                            success: 0,
-                                                        });
-                                                    }
-                                                    return resolve({
-                                                        success: 1,
-                                                        file: {
-                                                            url: url,
-                                                        },
-                                                    });
-                                                });
-                                        }
-                                    );
-                                });
-                            },
-                        },
-                    },
-                });
-                Quill.register("modules/imageUploader", ImageUploader);
-                quill.setContents(this.state);
-                this.instance = quill;
-                quill.on('editor-change', function (eventName, ...args) {
-                    if (eventName === 'text-change') {
-                        // args[0] will be delta
-                        console.log("args", args);
-                        this.state = args[0];
-                    } else if (eventName === 'selection-change') {
-                        // args[0] will be old range
-                    }
-                });
+
             },
         })
     );
 });
+
+
+window.addEventListener('DOMContentLoaded', () => initTinymce())
+$nextTick(() => initTinymce())
+const initTinymce = () => {
+    if (window.tinymce !== undefined && initialized === false) {
+        tinymce.init({
+            target: $refs.quill,
+            language: '{{ $getInterfaceLanguage() }}',
+            skin: typeof theme != 'undefined' ? theme : 'light',
+            content_css: this.skin === 'dark' ? 'dark' : '',
+            max_height: {{ $getHeight() }},
+        menubar: {{ $getShowMenuBar() ? 'true' : 'false' }},
+        plugins: ['{{ $getPlugins() }}'],
+            toolbar: '{{ $getToolbar() }}',
+            toolbar_mode: 'sliding',
+            relative_urls : {{ $getRelativeUrls() ? 'true' : 'false' }},
+        remove_script_host : {{ $getRemoveScriptHost() ? 'true' : 'false' }},
+        convert_urls : {{ $getConvertUrls() ? 'true' : 'false' }},
+        branding: false,
+            images_upload_handler: (blobInfo, success, failure, progress) => {
+            if (!blobInfo.blob()) return
+            $wire.upload(`componentFileAttachments.{{ $getStatePath() }}`, blobInfo.blob(), () => {
+                $wire.getComponentFileAttachmentUrl('{{ $getStatePath() }}').then((url) => {
+                    if (!url) {
+                        failure('{{ __('Error uploading file') }}')
+                        return
+                    }
+                    success(url)
+                })
+            })
+        },
+            automatic_uploads: true,
+            templates: {{ $getTemplate() }},
+        setup: function(editor) {
+            editor.on('blur', function(e) {
+                state = editor.getContent()
+            })
+            editor.on('init', function(e) {
+                if (state != null) {
+                    editor.setContent(state)
+                }
+            })
+            function putCursorToEnd() {
+                editor.selection.select(editor.getBody(), true);
+                editor.selection.collapse(false);
+            }
+            $watch('state', function(newstate) {
+                if (newstate !== editor.getContent()) {
+                    editor.resetContent(newstate || '');
+                    putCursorToEnd();
+                }
+            });
+        },
+        {{ $getCustomConfigs() }}
+    })
+        initialized = true
+    }
