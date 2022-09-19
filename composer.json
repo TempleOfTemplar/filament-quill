@@ -1,7 +1,7 @@
 {
     "name": "templeoftemplar/filament-quill",
     "description": "Filament Form plugin for Date Range Input",
-    "version" : "0.1.1",
+    "version" : "0.1.2",
     "keywords": [
         "fillament-quill",
         "filament",
