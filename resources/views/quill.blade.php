@@ -8,7 +8,9 @@
         :required="$isRequired()"
         :state-path="$getStatePath()"
 >
-
+    @once
+        <link href="{{ asset('dist/filament-quill.css') }}" rel="stylesheet">
+    @endonce
     <div class="filament-quill">
         <div
                 x-data="quillEditorComponent({state: $wire.{{ $applyStateBindingModifiers('entangle(\'' . $getStatePath() . '\')') }}})"
@@ -28,5 +30,6 @@
             @endunless
         </div>
     </div>
+
 
 </x-forms::field-wrapper>

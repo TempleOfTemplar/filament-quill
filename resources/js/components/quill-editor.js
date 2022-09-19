@@ -1,12 +1,12 @@
 import Quill from "quill/core/quill";
-
+import '../../dist/css/quill.core.css';
+import '../../dist/css/quill.snow.css';
 
 export default (Alpine) => {
     Alpine.data('quillEditorComponent', ({
                                              state,
                                          }) => {
-        import '../../dist/css/quill.core.css';
-        import '../../dist/css/quill.snow.css';
+
         return {
             state,
             init: function () {

@@ -5107,8 +5107,8 @@
 
   // node_modules/quill/core/module.js
   var Module = class {
-    constructor(quill2, options = {}) {
-      this.quill = quill2;
+    constructor(quill, options = {}) {
+      this.quill = quill;
       this.options = options;
     }
   };
@@ -5461,8 +5461,8 @@
 
   // node_modules/quill/core/theme.js
   var Theme = class {
-    constructor(quill2, options) {
-      this.quill = quill2;
+    constructor(quill, options) {
+      this.quill = quill;
       this.options = options;
       this.modules = {};
     }
@@ -5939,54 +5939,61 @@
           this.render();
         },
         render() {
-          console.log("RENDER");
-          this.editor = null;
-          this.editor = new Quill(this.$refs.quill, {
-            theme: "snow",
-            modules: {
-              imageUploader: {
-                upload: (file) => {
-                  return new Promise((resolve) => {
-                    this.$wire.upload(
-                      `componentFileAttachments.${statePath}`,
-                      file,
-                      (uploadedFilename) => {
-                        this.$wire.getComponentFileAttachmentUrl(statePath).then((url) => {
-                          if (!url) {
-                            return resolve({
-                              success: 0
-                            });
-                          }
-                          return resolve({
-                            success: 1,
-                            file: {
-                              url
+          window.addEventListener("DOMContentLoaded", () => initQuill());
+          const initQuill = () => {
+            console.log("RENDER");
+            this.editor = null;
+            this.editor = new Quill(this.$refs.quill, {
+              theme: null,
+              modules: {
+                imageUploader: {
+                  upload: (file) => {
+                    return new Promise((resolve) => {
+                      this.$wire.upload(
+                        `componentFileAttachments.${statePath}`,
+                        file,
+                        (uploadedFilename) => {
+                          this.$wire.getComponentFileAttachmentUrl(statePath).then((url) => {
+                            if (!url) {
+                              return resolve({
+                                success: 0
+                              });
                             }
+                            return resolve({
+                              success: 1,
+                              file: {
+                                url
+                              }
+                            });
                           });
-                        });
-                      }
-                    );
-                  });
+                        }
+                      );
+                    });
+                  }
                 }
               }
-            }
-          });
-          Quill.register("modules/imageUploader", ImageUploader);
-          quill.setContents(this.state);
-          this.instance = quill;
-          quill.on("editor-change", function(eventName, ...args) {
-            if (eventName === "text-change") {
-              console.log("args", args);
-            } else if (eventName === "selection-change") {
-            }
-          });
+            });
+            Quill.register("modules/imageUploader", ImageUploader);
+            this.editor.setContents(this.state);
+            this.editor.on("editor-change", function(eventName, ...args) {
+              if (eventName === "text-change") {
+                console.log("args", args);
+              } else if (eventName === "selection-change") {
+              }
+            });
+          };
         }
       };
     });
   };
 
   // resources/js/index.js
-  document.addEventListener("alpine:init", () => {
+  if (!window.Alpine) {
+    document.addEventListener("alpine:init", () => {
+      console.log("alpine:init");
+      window.Alpine.plugin(quill_editor_default);
+    });
+  } else {
     window.Alpine.plugin(quill_editor_default);
-  });
+  }
 })();
