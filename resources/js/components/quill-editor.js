@@ -14,6 +14,7 @@ export default (Alpine) => {
             },
             render() {
                 window.addEventListener('DOMContentLoaded', () => initQuill())
+                $nextTick(() => initQuill())
                 const initQuill = () => {
                     console.log("RENDER");
                     this.editor = null
