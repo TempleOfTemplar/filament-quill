@@ -42,7 +42,7 @@ document.addEventListener('alpine:init', () => {
                 window.addEventListener('DOMContentLoaded', () => {
                     this.editor = null
 
-                    this.editor = new Quill(this.$ref.quill, {
+                    this.editor = new Quill($ref.quill, {
                         theme: null,
                         modules: {
                             // imageUploader: {
