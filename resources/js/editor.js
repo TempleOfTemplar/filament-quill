@@ -2,6 +2,7 @@ import Quill from "quill/core/quill";
 import ImageUploader from "quill-image-uploader";
 
 document.addEventListener("alpine:init", () => {
+    console.log("alpine:init");
     Alpine.data(
         "quill",
         ({state, statePath, placeholder, readOnly, tools, minHeight}) => ({
@@ -9,6 +10,7 @@ document.addEventListener("alpine:init", () => {
             state: state,
             tools: tools,
             init() {
+                console.log("quill:init");
                 var quill = new Quill(this.$el, {
                     theme: 'snow',
                     modules: {
@@ -43,6 +45,7 @@ document.addEventListener("alpine:init", () => {
                 });
                 Quill.register("modules/imageUploader", ImageUploader);
                 quill.setContents(this.state);
+                this.instance = quill;
                 quill.on('editor-change', function (eventName, ...args) {
                     if (eventName === 'text-change') {
                         // args[0] will be delta
