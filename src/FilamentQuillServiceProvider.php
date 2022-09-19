@@ -11,4 +11,8 @@ class FilamentQuillServiceProvider extends PluginServiceProvider
     protected array $beforeCoreScripts = [
         'filament-quill' => __DIR__ . '/../dist/filament-quill.js',
     ];
+
+    protected array $styles = [
+        'filament-quill' => __DIR__ . '/../resources/dist/css/quill.css',
+    ];
 }
