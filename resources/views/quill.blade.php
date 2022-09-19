@@ -16,7 +16,7 @@
                 x-data="quillEditorComponent({state: $wire.{{ $applyStateBindingModifiers('entangle(\'' . $getStatePath() . '\')') }}})"
         >
             @unless($isDisabled())
-                <input
+                <div
                         wire:ignore
                         id="quill-editor-{{ $getId() }}"
                         type="hidden"

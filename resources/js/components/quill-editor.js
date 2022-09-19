@@ -2,6 +2,9 @@ import Quill from "quill/core/quill";
 import '../../dist/css/quill.core.css';
 import '../../dist/css/quill.snow.css';
 
+Quill.register('modules/imageUploader', ImageUploader);
+
+
 export default (Alpine) => {
     Alpine.data('quillEditorComponent', ({
                                              state,
@@ -18,6 +21,7 @@ export default (Alpine) => {
                 const initQuill = () => {
                     console.log("RENDER");
                     this.editor = null
+
                     this.editor = new Quill(this.$refs.quill, {
                         theme: null,
                         modules: {
@@ -50,7 +54,6 @@ export default (Alpine) => {
                             },
                         },
                     });
-                    Quill.register('modules/imageUploader', ImageUploader);
                     this.editor.setContents(this.state);
                     this.editor.on('editor-change', function (eventName, ...args) {
                         if (eventName === 'text-change') {
