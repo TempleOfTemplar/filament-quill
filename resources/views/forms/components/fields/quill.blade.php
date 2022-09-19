@@ -1,12 +1,12 @@
 <x-forms::field-wrapper
-    :id="$getId()"
-    :label="$getLabel()"
-    :label-sr-only="$isLabelHidden()"
-    :helper-text="$getHelperText()"
-    :hint="$getHint()"
-    :hint-icon="$getHintIcon()"
-    :required="$isRequired()"
-    :state-path="$getStatePath()"
+        :id="$getId()"
+        :label="$getLabel()"
+        :label-sr-only="$isLabelHidden()"
+        :helper-text="$getHelperText()"
+        :hint="$getHint()"
+        :hint-icon="$getHintIcon()"
+        :required="$isRequired()"
+        :state-path="$getStatePath()"
 >
 
     <div class="filament-quill">
@@ -14,9 +14,10 @@
                 x-data="{ state: $wire.entangle('{{ $getStatePath() }}'), initialized: false }"
                 x-init="(() => {
     window.addEventListener('DOMContentLoaded', () => initQuill());
+    $nextTick(() => initQuill())
     const initQuill = ()=>{
 
-        var quill = new Quill(this.$quill, {
+        var quill = new Quill($refs.quill, {
             theme: 'snow',
             modules: {
                 imageUploader: {
