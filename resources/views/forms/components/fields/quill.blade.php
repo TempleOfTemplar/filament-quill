@@ -60,9 +60,6 @@
         // args[0] will be old range
         }
         });
-
-                }
-                }
             })()"
                 x-cloak
                 wire:ignore

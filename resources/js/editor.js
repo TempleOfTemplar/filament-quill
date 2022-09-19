@@ -18,6 +18,7 @@ document.addEventListener("alpine:init", () => {
 });
 
 
+
 window.addEventListener('DOMContentLoaded', () => initTinymce())
 $nextTick(() => initTinymce())
 const initTinymce = () => {
