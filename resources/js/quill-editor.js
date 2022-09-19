@@ -39,9 +39,9 @@ document.addEventListener('alpine:init', () => {
             state: state,
             tools: tools,
             init() {
-                window.addEventListener('DOMContentLoaded', () => initQuill())
+                // window.addEventListener('DOMContentLoaded', () => initQuill())
                 // $nextTick(() => initQuill())
-                const initQuill = () => {
+                // const initQuill = () => {
                     this.editor = null
 
                     this.editor = new Quill(this.$el, {
@@ -86,7 +86,7 @@ document.addEventListener('alpine:init', () => {
                             // args[0] will be old range
                         }
                     });
-                }
+                // }
             }
         })
     )
