@@ -2,11 +2,9 @@
 
 namespace FilamentQuill;
 
-use Filament\Facades\Filament;
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Filament\PluginServiceProvider;
 
-class FilamentQuillServiceProvider extends PackageServiceProvider
+class FilamentQuillServiceProvider extends PluginServiceProvider
 {
     public static string $name = 'filament-quill';
 
