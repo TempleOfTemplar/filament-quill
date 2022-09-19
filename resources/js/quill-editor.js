@@ -39,12 +39,10 @@ document.addEventListener('alpine:init', () => {
             state: state,
             tools: tools,
             init() {
-                // window.addEventListener('DOMContentLoaded', () => initQuill())
-                // $nextTick(() => initQuill())
-                // const initQuill = () => {
+                window.addEventListener('DOMContentLoaded', () => {
                     this.editor = null
 
-                    this.editor = new Quill(this.$el, {
+                    this.editor = new Quill(this.$ref.quill, {
                         theme: null,
                         modules: {
                             // imageUploader: {
@@ -86,6 +84,10 @@ document.addEventListener('alpine:init', () => {
                             // args[0] will be old range
                         }
                     });
+                });
+                // $nextTick(() => initQuill())
+                // const initQuill = () => {
+
                 // }
             }
         })

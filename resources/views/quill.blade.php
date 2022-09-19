@@ -23,6 +23,19 @@
                 minHeight: @js($getMinHeight())
             })"
         >
+            @unless($isDisabled())
+                <div
+                        wire:ignore
+                        id="quill-editor-{{ $getId() }}"
+                        type="hidden"
+                        x-ref="quill"
+                >
+            @else
+                <div
+                        x-html="state"
+                        class="prose dark:prose-invert block w-full max-w-none rounded-lg border border-gray-300 bg-white p-3 opacity-70 shadow-sm transition duration-75 dark:border-gray-600 dark:bg-gray-700"
+                ></div>
+            @endunless
         </div>
     </div>
 
