@@ -13,6 +13,7 @@ class FilamentQuillServiceProvider extends PluginServiceProvider
     ];
 
     protected array $styles = [
-        'filament-quill-styles' => __DIR__ . '/../resources/dist/css/quill.css',
+        'filament-quill-styles-1' => __DIR__ . '/../resources/dist/css/quill.core.css',
+        'filament-quill-styles-2' => __DIR__ . '/../resources/dist/css/quill.snow.css',
     ];
 }
