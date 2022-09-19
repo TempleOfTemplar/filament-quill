@@ -45,7 +45,7 @@ document.addEventListener('alpine:init', () => {
             },
             render() {
                 window.addEventListener('DOMContentLoaded', () => initQuill())
-                $nextTick(() => initQuill())
+                // $nextTick(() => initQuill())
                 const initQuill = () => {
                     this.editor = null
 
