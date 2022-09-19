@@ -36,14 +36,14 @@ class FilamentQuillServiceProvider extends PackageServiceProvider
     public function getScripts(): array
     {
         return [
-            'filament-quill.js' => __DIR__ . '/../dist/filament-quill.js',
+            'filament-quill' => __DIR__ . '/../dist/filament-quill.js',
         ];
     }
 
     public function getStyles(): array
     {
         return [
-            'filament-quill.css' => __DIR__ . '/../dist/filament-quill.css',
+            'quill.snow' => __DIR__ . '/../dist/filament-quill.css',
         ];
     }
 
