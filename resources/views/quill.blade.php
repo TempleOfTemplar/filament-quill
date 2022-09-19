@@ -13,7 +13,15 @@
     @endonce
     <div class="filament-quill">
         <div
-                x-data="quillEditorComponent({state: $wire.{{ $applyStateBindingModifiers('entangle(\'' . $getStatePath() . '\')') }}})"
+                wire:ignore
+                x-data="quillEditorComponent({
+                state: $wire.entangle('{{ $getStatePath() }}').defer,
+                statePath: '{{ $getStatePath() }}',
+                placeholder: '{{ $getPlaceholder() }}',
+                readOnly: {{ $isDisabled() ? 'true' : 'false' }},
+                tools: @js($getTools()),
+                minHeight: @js($getMinHeight())
+            })"
         >
             @unless($isDisabled())
                 <div
