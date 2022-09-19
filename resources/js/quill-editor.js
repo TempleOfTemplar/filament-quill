@@ -34,7 +34,7 @@ Quill.register({
 
 
 document.addEventListener('alpine:init', () => {
-    Alpine.data('quilleditor', ({state, statePath, placeholder, readOnly, tools, minHeight}) => ({
+    Alpine.data('quilleditor', ({state, statePath, placeholder, readOnly, id, tools, minHeight}) => ({
             instance: null,
             state: state,
             tools: tools,
@@ -42,7 +42,7 @@ document.addEventListener('alpine:init', () => {
                 window.addEventListener('DOMContentLoaded', () => {
                     this.editor = null
 
-                    this.editor = new Quill($ref.quill, {
+                    this.editor = new Quill(document.getElementById(id), {
                         theme: null,
                         modules: {
                             // imageUploader: {
