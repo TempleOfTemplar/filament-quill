@@ -30,7 +30,7 @@ Quill.register({
     'formats/link' : Link,
 });
 
-Quill.register('modules/imageUploader', ImageUploader);
+// Quill.register('modules/imageUploader', ImageUploader);
 
 
 document.addEventListener('alpine:init', () => {
@@ -52,33 +52,33 @@ document.addEventListener('alpine:init', () => {
                     this.editor = new Quill(this.$el, {
                         theme: null,
                         modules: {
-                            imageUploader: {
-                                upload: (file) => {
-                                    return new Promise((resolve) => {
-                                        this.$wire.upload(
-                                            `componentFileAttachments.${statePath}`,
-                                            file,
-                                            (uploadedFilename) => {
-                                                this.$wire
-                                                    .getComponentFileAttachmentUrl(statePath)
-                                                    .then((url) => {
-                                                        if (!url) {
-                                                            return resolve({
-                                                                success: 0,
-                                                            });
-                                                        }
-                                                        return resolve({
-                                                            success: 1,
-                                                            file: {
-                                                                url: url,
-                                                            },
-                                                        });
-                                                    });
-                                            }
-                                        );
-                                    });
-                                },
-                            },
+                            // imageUploader: {
+                            //     upload: (file) => {
+                            //         return new Promise((resolve) => {
+                            //             this.$wire.upload(
+                            //                 `componentFileAttachments.${statePath}`,
+                            //                 file,
+                            //                 (uploadedFilename) => {
+                            //                     this.$wire
+                            //                         .getComponentFileAttachmentUrl(statePath)
+                            //                         .then((url) => {
+                            //                             if (!url) {
+                            //                                 return resolve({
+                            //                                     success: 0,
+                            //                                 });
+                            //                             }
+                            //                             return resolve({
+                            //                                 success: 1,
+                            //                                 file: {
+                            //                                     url: url,
+                            //                                 },
+                            //                             });
+                            //                         });
+                            //                 }
+                            //             );
+                            //         });
+                            //     },
+                            // },
                         },
                     });
                     this.editor.setContents(this.state);
