@@ -4,17 +4,39 @@ namespace FilamentQuill;
 
 use Filament\PluginServiceProvider;
 
-class FilamentQuillServiceProvider extends PluginServiceProvider
+class FilamentQuillServiceProvider extends PackageServiceProvider
 {
-    public static string $name = 'filament-quill';
 
+    public function configurePackage(Package $package): void
+    {
+        $package
+            ->name('filament-quill')
+            ->hasViews()
+            ->hasAssets();
+    }
 
-    protected array $styles = [
-        'quill.css' => __DIR__ . '/../dist/filament-quill.css',
-    ];
+    public function packageBooted()
+    {
+        if (class_exists(\Filament\FilamentServiceProvider::class)) {
+            Filament::serving(function () {
+                Filament::registerScripts($this->getScripts(), true);
+                Filament::registerStyles($this->getStyles());
+            });
+        }
+    }
 
-    protected array $scripts = [
-        'filament-quill.js' => __DIR__ . '/../dist/filament-quill.js',
-    ];
+    public function getScripts(): array
+    {
+        return [
+            'filament-quill.js' => __DIR__ . '/../dist/filament-quill.js',
+        ];
+    }
+
+    public function getStyles(): array
+    {
+        return [
+            'filament-quill.css' => __DIR__ . '/../dist/filament-quill.css',
+        ];
+    }
 
 }
