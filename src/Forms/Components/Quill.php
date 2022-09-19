@@ -13,7 +13,7 @@ class Quill extends Field implements HasFileAttachmentsContract
 {
   use HasFileAttachments, HasPlaceholder, InteractsWithTools;
 
-  protected string $view = 'filament-quill::forms.components.fields.quill';
+  protected string $view = 'filament-quill::quill';
 
   // TODO
   protected array | Closure $tools = [
