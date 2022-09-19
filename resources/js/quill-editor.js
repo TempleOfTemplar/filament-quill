@@ -33,7 +33,7 @@ Quill.register('modules/imageUploader', ImageUploader);
 
 
 document.addEventListener('alpine:init', () => {
-    Alpine.data('quillEditorComponent', ({
+    Alpine.data('quilleditor', ({
                                              state,
                                          }) => {
 
@@ -46,7 +46,6 @@ document.addEventListener('alpine:init', () => {
                 window.addEventListener('DOMContentLoaded', () => initQuill())
                 $nextTick(() => initQuill())
                 const initQuill = () => {
-                    console.log("RENDER", this.$refs, this.$el);
                     this.editor = null
 
                     this.editor = new Quill(this.$el, {
