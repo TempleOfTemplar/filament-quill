@@ -10,6 +10,7 @@ export default (Alpine) => {
                 this.render();
             },
             render() {
+                console.log("RENDER");
                 this.editor = null
                 this.editor = new Quill(this.$refs.quill, {
                     theme: 'snow',
