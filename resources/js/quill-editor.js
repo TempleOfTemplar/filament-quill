@@ -22,28 +22,23 @@ Quill.register({
     'formats/header': Header,
     'formats/underline': Underline,
     'formats/list': ListItem,
-    'formats/strike' : Strike,
-    'formats/blockquote' : Blockquote,
-    'formats/codeblock' : CodeBlock,
-    'formats/script' : Script,
-    'formats/image' : Image,
-    'formats/link' : Link,
+    'formats/strike': Strike,
+    'formats/blockquote': Blockquote,
+    'formats/codeblock': CodeBlock,
+    'formats/script': Script,
+    'formats/image': Image,
+    'formats/link': Link,
 });
 
 // Quill.register('modules/imageUploader', ImageUploader);
 
 
 document.addEventListener('alpine:init', () => {
-    Alpine.data('quilleditor', ({
-                                             state,
-                                         }) => {
-
-        return {
-            state,
-            init: function () {
-                this.render();
-            },
-            render() {
+    Alpine.data('quilleditor', ({state, statePath, placeholder, readOnly, tools, minHeight}) => ({
+            instance: null,
+            state: state,
+            tools: tools,
+            init() {
                 window.addEventListener('DOMContentLoaded', () => initQuill())
                 // $nextTick(() => initQuill())
                 const initQuill = () => {
@@ -92,7 +87,7 @@ document.addEventListener('alpine:init', () => {
                         }
                     });
                 }
-            },
-        }
-    });
+            }
+        })
+    )
 });
