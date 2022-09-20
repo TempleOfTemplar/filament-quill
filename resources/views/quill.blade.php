@@ -8,6 +8,9 @@
         :required="$isRequired()"
         :state-path="$getStatePath()"
 >
+    @once
+        <link href="{{ asset('dist/quill.snow.css') }}" rel="stylesheet">
+    @endonce
     <div
             x-data="quilleditor({
             state: $wire.{{ $applyStateBindingModifiers('entangle(\'' . $getStatePath() . '\')') }},
