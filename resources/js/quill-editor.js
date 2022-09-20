@@ -41,6 +41,7 @@ export default (Alpine) => {
                 window.addEventListener('DOMContentLoaded', () => {
                     console.log($refs.quillEditorField);
                     console.log(this.$el);
+                    window.Quill = Quill;
                     this.instance = new Quill($refs.quillEditorField, {
                         theme: null,
                         modules: {
