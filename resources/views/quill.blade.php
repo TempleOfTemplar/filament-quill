@@ -8,37 +8,17 @@
         :required="$isRequired()"
         :state-path="$getStatePath()"
 >
-    @once
-        <link href="{{ asset('dist/filament-quill.css') }}" rel="stylesheet">
-    @endonce
-        @unless($isDisabled())
-            <div
-                    wire:ignore
-                    id="quill-editor-{{ $getId() }}"
-                    type="hidden"
-                    x-ref="quill"
-            >
-                @else
-                    <div
-                            x-html="state"
-                            class="prose dark:prose-invert block w-full max-w-none rounded-lg border border-gray-300 bg-white p-3 opacity-70 shadow-sm transition duration-75 dark:border-gray-600 dark:bg-gray-700"
-                    ></div>
-                @endunless
-    <div class="filament-quill">
+    <div
+            x-data="quilleditor({
+            state: $wire.{{ $applyStateBindingModifiers('entangle(\'' . $getStatePath() . '\')') }},
+        })"
+    >
         <div
                 wire:ignore
-                x-data="quilleditor({
-                state: $wire.entangle('{{ $getStatePath() }}').defer,
-                statePath: '{{ $getStatePath() }}',
-                placeholder: '{{ $getPlaceholder() }}',
-                readOnly: {{ $isDisabled() ? 'true' : 'false' }},
-                id: '{{$getId()}}',
-                tools: @js($getTools()),
-                minHeight: @js($getMinHeight())
-            })"
-        >
-
-        </div>
+                class="w-full border"
+                x-ref="codeeditor"
+                style="min-height: 150px;"
+        ></div>
     </div>
 
 
