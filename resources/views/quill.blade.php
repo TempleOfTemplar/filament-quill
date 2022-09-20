@@ -9,7 +9,7 @@
         :state-path="$getStatePath()"
 >
     @once
-        <link href="{{ asset('dist/quill.snow.css') }}" rel="stylesheet">
+        <link href="{{ asset('dist/css/quill.snow.css') }}" rel="stylesheet">
     @endonce
     <div
             x-data="quilleditor({
