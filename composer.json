@@ -25,19 +25,19 @@
     },
     "autoload": {
         "psr-4": {
-            "TempleOfTemplar\\FilamentQuill\\": "src",
-            "TempleOfTemplar\\FilamentQuill\\Database\\Factories\\": "database/factories"
+            "FilamentQuill\\": "src",
+            "FilamentQuill\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "TempleOfTemplar\\FilamentQuill\\Tests\\": "tests"
+            "FilamentQuill\\Tests\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "TempleOfTemplar\\FilamentQuill\\FilamentQuillServiceProvider"
+                "FilamentQuill\\FilamentQuillServiceProvider"
             ]
         }
     },

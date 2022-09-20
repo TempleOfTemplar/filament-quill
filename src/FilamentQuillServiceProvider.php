@@ -1,6 +1,6 @@
 <?php
 
-namespace TempleOfTemplar\FilamentQuill;
+namespace FilamentQuill;
 
 use Filament\PluginServiceProvider;
 
