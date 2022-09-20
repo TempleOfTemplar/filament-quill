@@ -48,7 +48,7 @@ export default (Alpine) => {
                     console.log(this.$el);
                     window.Quill = Quill;
                     this.instance = new Quill(this.$refs.quillEditorField, {
-                        theme: null,
+                        theme: 'show',
                         modules: {
                             // imageUploader: {
                             //     upload: (file) => {
