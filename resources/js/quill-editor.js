@@ -39,10 +39,10 @@ export default (Alpine) => {
             tools: tools,
             init() {
                 window.addEventListener('DOMContentLoaded', () => {
-                    console.log($refs.quillEditorField);
+                    console.log(this.$refs.quillEditorField);
                     console.log(this.$el);
                     window.Quill = Quill;
-                    this.instance = new Quill($refs.quillEditorField, {
+                    this.instance = new Quill(this.$refs.quillEditorField, {
                         theme: null,
                         modules: {
                             // imageUploader: {
