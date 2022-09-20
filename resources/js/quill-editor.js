@@ -12,7 +12,6 @@ import CodeBlock from 'quill/formats/code'
 import Script from 'quill/formats/script'
 import Image from 'quill/formats/image'
 import Link from 'quill/formats/link'
-import ImageUploader from "quill-image-uploader";
 
 Quill.register({
     'modules/toolbar': Toolbar,
