@@ -16,7 +16,7 @@
         <div
                 wire:ignore
                 class="w-full border"
-                x-ref="codeeditor"
+                x-ref="quillEditorField"
                 style="min-height: 150px;"
         ></div>
     </div>
