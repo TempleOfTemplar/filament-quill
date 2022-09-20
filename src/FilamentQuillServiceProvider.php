@@ -23,15 +23,11 @@ class FilamentQuillServiceProvider extends PackageServiceProvider
         if (class_exists(\Filament\FilamentServiceProvider::class)) {
             Filament::serving(function () {
                 Filament::registerStyles($this->getStyles());
-                Filament::registerScripts($this->getScripts(), true);
+                Filament::registerScripts($this->getScripts());
             });
         }
     }
 
-    protected function bootLoaders()
-    {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'filament-quill');
-    }
 
     public function getScripts(): array
     {

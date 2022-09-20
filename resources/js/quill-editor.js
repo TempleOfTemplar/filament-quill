@@ -40,9 +40,8 @@ document.addEventListener('alpine:init', () => {
             tools: tools,
             init() {
                 window.addEventListener('DOMContentLoaded', () => {
-                    this.editor = null
-
-                    this.editor = new Quill(document.getElementById(id), {
+                    console.log(this.$el);
+                    this.instance = new Quill(this.$el, {
                         theme: null,
                         modules: {
                             // imageUploader: {
