@@ -1,4 +1,3 @@
-import Quill from "quill/core/quill";
 import Snow from 'quill/themes/snow'
 import Toolbar from 'quill/modules/toolbar'
 import Bold from 'quill/formats/bold'
@@ -12,6 +11,7 @@ import CodeBlock from 'quill/formats/code'
 import Script from 'quill/formats/script'
 import Image from 'quill/formats/image'
 import Link from 'quill/formats/link'
+import Quill from "quill/core/quill";
 
 Quill.register({
     'modules/toolbar': Toolbar,
@@ -39,8 +39,9 @@ export default (Alpine) => {
             tools: tools,
             init() {
                 window.addEventListener('DOMContentLoaded', () => {
+                    console.log($refs.quillEditorField);
                     console.log(this.$el);
-                    this.instance = new Quill(this.$el, {
+                    this.instance = new Quill($refs.quillEditorField, {
                         theme: null,
                         modules: {
                             // imageUploader: {
