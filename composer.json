@@ -20,25 +20,24 @@
     "require": {
         "php": "^8.1",
         "filament/filament": "^2.10",
-        "spatie/laravel-package-tools": "^1.9.2",
         "illuminate/contracts": "^9.0",
-        "filament/forms": "^2.0"
+        "spatie/laravel-package-tools": "^1.9.2"
     },
     "autoload": {
         "psr-4": {
-            "FilamentQuill\\": "src",
-            "FilamentQuill\\Database\\Factories\\": "database/factories"
+            "TempleOfTemplar\\FilamentQuill\\": "src",
+            "TempleOfTemplar\\FilamentQuill\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "FilamentQuill\\Tests\\": "tests"
+            "TempleOfTemplar\\FilamentQuill\\Tests\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "FilamentQuill\\FilamentQuillServiceProvider"
+                "TempleOfTemplar\\FilamentQuill\\FilamentQuillServiceProvider"
             ]
         }
     },
