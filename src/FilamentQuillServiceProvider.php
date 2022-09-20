@@ -30,11 +30,6 @@ class FilamentQuillServiceProvider extends PackageServiceProvider
         }
     }
 
-    protected function bootLoaders()
-    {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'filament-quill');
-    }
-
     public function getScripts(): array
     {
         return [
@@ -46,7 +41,7 @@ class FilamentQuillServiceProvider extends PackageServiceProvider
     public function getStyles(): array
     {
         return [
-            'quill.snow' => __DIR__ . '/../resources/dist/css/editor.css',
+            'quill.snow' => __DIR__ . '/../resources/dist/css/quill.snow.css',
         ];
     }
 }

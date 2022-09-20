@@ -42,6 +42,7 @@ document.addEventListener('alpine:init', () => {
             tools: tools,
             init() {
                 window.addEventListener('DOMContentLoaded', () => {
+                    console.log("his.$el", this.$el);
                     this.instance = new Quill(this.$el, {
                         theme: null,
                         modules: {
