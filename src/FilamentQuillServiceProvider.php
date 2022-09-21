@@ -11,6 +11,7 @@ class FilamentQuillServiceProvider extends PluginServiceProvider
     public static string $name = 'filament-quill';
 
     protected array $beforeCoreScripts = [
+        'quill.min' => __DIR__.'/../resources/dist/js/quill.min.js',
         'filament-quill' => __DIR__.'/../resources/dist/js/filament-quill.js',
     ];
 
