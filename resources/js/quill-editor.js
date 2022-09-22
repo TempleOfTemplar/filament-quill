@@ -1,4 +1,4 @@
-// import Quill from "./quill-exported";
+import Quill from "./quill-exported";
 
 export default (Alpine) => {
     Alpine.data('quilleditor', ({state, statePath, placeholder, readOnly, id, tools, minHeight}) => ({

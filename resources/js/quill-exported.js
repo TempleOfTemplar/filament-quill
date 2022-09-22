@@ -1,4 +1,10 @@
-import Quill from 'quill/core';
+import Quill from 'quill';
+
+const Delta = Quill.import('delta')
+const Embed = Quill.import('blots/embed')
+const Inline = Quill.import('blots/inline')
+const Link = Quill.import('formats/link')
+const BlockEmbed = Quill.import('blots/block/embed')
 
 import Toolbar from 'quill/modules/toolbar';
 import Snow from 'quill/themes/snow';
